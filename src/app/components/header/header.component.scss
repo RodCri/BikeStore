@@ -1,0 +1,176 @@
+.show-mobile {
+  display: block;
+  box-shadow: 0px 2px 5px rgb(black, .2);
+
+  >div {
+    padding: 1em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    button {
+      border: 0;
+      background: transparent;
+    }
+  }
+
+  .logo {
+    width: 80px;
+  }
+
+  .menu {
+    cursor: pointer;
+  }
+
+  .close {
+    align-self: flex-end;
+    cursor: pointer;
+    transition: all ease-in .4s;
+
+    &:hover {
+      transform: rotate(180deg);
+    }
+  }
+
+  .side-menu {
+    position: fixed;
+    right: 0;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    background-color: #fcb427;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    transform: translateX(-100%);
+    transition: all ease-out .5s;
+
+    &.active {
+      transform: translateX(0);
+    }
+
+    ul {
+      list-style: none;
+      margin-top: 3rem;
+
+      li {
+        margin: 4rem 0;
+
+        &:hover a {
+          border-bottom: .2rem solid red;
+        }
+
+        a {
+          padding: .5rem 0;
+          text-decoration: none;
+          color: #000;
+          font-weight: 700;
+          transition: all ease .2s;
+        }
+      }
+    }
+  }
+
+  .shopping {
+    position: relative;
+
+    .count {
+      width: 18px;
+      height: 18px;
+      position: absolute;
+      top: -15px;
+      left: 8px;
+      font-size: 1.2rem;
+      background-color: #fcb427;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-weight: 700;
+    }
+  }
+}
+
+.hide-mobile {
+  display: none;
+  box-shadow: 0px 2px 5px rgb(black, .2);
+
+  >div {
+    padding: 1em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .logo {
+    margin-right: 1em;
+    width: 60px;
+  }
+
+  nav {
+    display: flex;
+    align-items: center;
+
+    ul {
+      display: flex;
+      list-style: none;
+
+      a {
+        margin: 0 .2em;
+        color: inherit;
+        text-decoration: none;
+      }
+    }
+  }
+
+  .info {
+    display: flex;
+    align-items: center;
+
+    .account {
+      margin-right: .5em;
+    }
+  }
+
+  .shopping {
+    position: relative;
+
+    .count {
+      width: 18px;
+      height: 18px;
+      position: absolute;
+      top: -15px;
+      left: 8px;
+      font-size: 1.2rem;
+      background-color: #fcb427;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-weight: 700;
+    }
+  }
+}
+
+/* Medium only */
+@media screen and (min-width: 40em) and (max-width: 63.9375em) {
+  .show-mobile {
+    display: none;
+  }
+
+  .hide-mobile {
+    display: block;
+  }
+}
+
+/* Large and up */
+@media screen and (min-width: 64em) {
+  .show-mobile {
+    display: none;
+  }
+
+  .hide-mobile {
+    display: block;
+  }
+}

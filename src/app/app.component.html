@@ -1,2 +1,8 @@
-<app-header></app-header>
-<list-products></list-products>
+<app-header [total]="total" [cantidad]="cantidad"></app-header>
+<list-products (total)="onTotal($event)" (cantidad)="onCantidad($event)"></list-products>
+<p>
+  Cantidad de producos {{cantidad}}
+</p>
+<p>
+  Total {{total}}
+</p>

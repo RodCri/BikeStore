@@ -1,4 +1,5 @@
-<app-img-product [imgProduct]="product.image" (loaded)="onLoaded()" class="product__img">
-</app-img-product>
+<app-img-product [imgProduct]="product.image" (loaded)="onLoaded()"></app-img-product>
 <p class="product__name">{{product.name}}</p>
-<p class="product__price">{{product.price}}</p>
+<p class="product__price">$ {{product.price}}</p>
+<button class="product__add" (click)="onAddToCart()"><img src="../../../assets/img/supermercado.png" alt=""> Add
+  Product</button>

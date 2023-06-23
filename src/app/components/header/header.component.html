@@ -1,1 +1,51 @@
-<p>header works!</p>
+<div class="show-mobile">
+  <div>
+    <button (click)="toggleMenu()">
+      <img src="../../../assets/img/menu.png" alt="menu" class="menu">
+    </button>
+    <a href="">
+      <img src="../../../assets/img/logo.png" alt="logo" class="logo">
+    </a>
+    <a href="">
+      <div class="shopping">
+        <span class="count">{{cantidad}}</span>
+        <img src="../../../assets/img/supermercado.png" alt="logo">
+      </div>
+    </a>
+  </div>
+  <div class="side-menu" [class.active]="showMenu">
+    <button (click)="toggleMenu()" class="close">
+      <img src="../../../assets/img/cerrar.png" alt="">
+    </button>
+    <ul>
+      <li><a href="">All</a></li>
+      <li><a href="">Bikes</a></li>
+      <li><a href="">Spare Parts</a></li>
+    </ul>
+  </div>
+</div>
+<div class="hide-mobile">
+  <div>
+    <nav>
+      <a class="" href="">
+        <img src="../../../assets/img/logo.png" alt="logo" class="logo">
+      </a>
+      <ul>
+        <li><a href="">All</a></li>
+        <li><a href="">Clothes</a></li>
+        <li><a href="">Electronics</a></li>
+      </ul>
+    </nav>
+    <div class="info">
+      <div class="account">cristian@gmail.com</div>
+      <div>
+        <a href="">
+          <div class="shopping">
+            <span class="count">{{cantidad}}</span>
+            <img src="../../../assets/img/supermercado.png" alt="logo">
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,28 @@
+.product__name {
+  font-size: 1.2rem;
+  margin-bottom: .5rem;
+  text-align: center;
+  color: #000;
+}
+
+.product__price {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #000;
+}
+
+.product__add {
+  width: 160px;
+  height: 40px;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  justify-content: center;
+  border-radius: .5rem;
+  border: none;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #b5b2b2;
+  }
+}
