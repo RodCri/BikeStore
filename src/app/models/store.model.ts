@@ -1,8 +1,13 @@
-export interface Store {
-  id: number;
+export interface Category {
+  id: string;
+  name: string;
+}
+
+export interface StoreProduct {
+  id: string;
   title: string;
-  price: string;
-  category: string;
+  price: number;
+  images: string[];
   description: string;
-  image: string;
+  category: Category;
 }

@@ -3,7 +3,7 @@ import { Product } from 'src/app/models/product.model';
 import products from 'src/app/data/products';
 import { ProductService } from 'src/app/services/product.service';
 import { StoreApiService } from 'src/app/services/store-api.service';
-
+import { StoreProduct } from 'src/app/models/store.model';
 
 @Component({
   selector: 'list-products',
@@ -13,11 +13,25 @@ import { StoreApiService } from 'src/app/services/store-api.service';
 export class ListProductsComponent implements OnInit {
 
   dataProducts: Product[] = products;
-  myShoppingCart: Product[] = [];
+  myShoppingCart: StoreProduct[] = [];
+
+  dataProductsApi: StoreProduct[] = [];
+  productDetail: StoreProduct = {
+    'id': '0',
+    'title': '',
+    'price': 0,
+    'images': [],
+    'description': '',
+    'category': {
+      'id': '',
+      'name': ''
+    }
+  };
 
   @Output() total = new EventEmitter<number>();
   @Output() cantidad = new EventEmitter<number>();
 
+  showProductDetail: boolean = false;
   // inyeccion de dependecias del servicio creado
   constructor(
     private productService: ProductService,
@@ -31,15 +45,26 @@ export class ListProductsComponent implements OnInit {
     // cuando son tareas asicronas
     this.store.getAllProducts()
       .subscribe(data => {
-        console.log(data)
-        // this.dataProducts = data;
+        this.dataProductsApi = data;
       });
   }
 
-  onAddToShoppingCart(product: Product) {
+  onAddToShoppingCart(product: StoreProduct) {
     this.productService.addProduct(product)
     this.total.emit(this.productService.getTotal());
     this.cantidad.emit(this.productService.getCount());
   }
 
+  toggleProductDetail() {
+    this.showProductDetail = !this.showProductDetail;
+  }
+
+  onShowDetail(id: string) {
+    this.store.getProduct(id)
+      .subscribe(data => {
+        this.toggleProductDetail()
+        this.productDetail = data;
+        console.log(this.productDetail)
+      });
+  }
 }
