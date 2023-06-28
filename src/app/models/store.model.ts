@@ -11,3 +11,11 @@ export interface StoreProduct {
   description: string;
   category: Category;
 }
+// Data Transfer Object
+export interface CreateProductDTO extends Omit<StoreProduct, 'id' | 'category'> {
+  categoryId: number;
+}
+// Campos opcionales Partial
+export interface UpdateproductDTO extends Partial<CreateProductDTO> {
+
+}
