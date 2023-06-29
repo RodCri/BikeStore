@@ -10,6 +10,7 @@ export interface StoreProduct {
   images: string[];
   description: string;
   category: Category;
+  taxes?: number;
 }
 // Data Transfer Object
 export interface CreateProductDTO extends Omit<StoreProduct, 'id' | 'category'> {

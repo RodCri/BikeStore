@@ -36,6 +36,7 @@ export class ListProductsComponent implements OnInit {
   limit = 10;
   offset = 0;
 
+  statusDetail: 'loading' | 'success' | 'error' | 'init' = 'init';
   // inyeccion de dependecias del servicio creado
   constructor(
     private productService: ProductService,
@@ -64,12 +65,22 @@ export class ListProductsComponent implements OnInit {
   }
 
   onShowDetail(id: string) {
+    this.statusDetail = 'loading';
     this.store.getProduct(id)
-      .subscribe(data => {
-        this.toggleProductDetail()
-        this.productDetail = data;
-        console.log(this.productDetail)
-      });
+      .subscribe({
+        next: (resp) => {
+          this.toggleProductDetail()
+          this.productDetail = resp;
+          console.log(resp)
+        },
+        error: (err) => {
+          this.statusDetail = 'error';
+          console.log(err);
+        },
+        complete: () => {
+          this.statusDetail = 'success';
+        }
+      })
   }
 
   createNewProduct() {
